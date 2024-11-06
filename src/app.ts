@@ -9,7 +9,7 @@ import { envs } from './config/envs.plugin';
 })();
 
 function main(){
-   // Server.start();
-   console.log(envs);
+   Server.start();
+   //console.log(envs);
    
 }
