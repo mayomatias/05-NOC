@@ -1,4 +1,5 @@
 import { CheckService } from '../domain/use-cases/checks/check-service';
+import { SendEmailLogs } from '../domain/use-cases/email/send-logs';
 import { FileSystemDatasource } from '../infraestructure/datasources/file-system.datasource';
 import { LogRepositoryImpl } from '../infraestructure/repositories/log.repository.impl';
 import { CronService } from './cron/cron-service';
@@ -12,7 +13,8 @@ export class Server {
     
     public static start() {
         console.log('server starter');
-        const emailService = new EmailService(fileSystemLogRepository);
+        const emailService = new EmailService();
+
        /*  emailService.sendEmail({
             to: 'matiasandresmayo@gmail.com',
             subject: 'Logs de sistema',
@@ -22,7 +24,9 @@ export class Server {
             `
          }) */
 
-            //emailService.sendEmailWithFileSystemLogs('matiasandresmayo@gmail.com')
+          //  emailService.sendEmailWithFileSystemLogs('matiasandresmayo@gmail.com')
+
+        new SendEmailLogs(emailService, fileSystemLogRepository).execute('matiasandresmayo@gmail.com')
         CronService.createJob(
             '*/5 * * * * *',
             () => {
