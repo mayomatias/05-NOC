@@ -12,7 +12,7 @@ export class Server {
     
     public static start() {
         console.log('server starter');
-        const emailService = new EmailService();
+        const emailService = new EmailService(fileSystemLogRepository);
        /*  emailService.sendEmail({
             to: 'matiasandresmayo@gmail.com',
             subject: 'Logs de sistema',
