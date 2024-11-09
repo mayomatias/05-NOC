@@ -30,7 +30,8 @@ export class LogEntity {
     //Estos metodosestaticos son para adaptar de un objeto a otro
     //Tambien se pueden hacer en un archivo aparte y hacer mappers
 
-    static logFromJson = (json: string):LogEntity => {
+    static logFromJson = (json: string = '{}'):LogEntity => {
+        json = (json === '') ? '{}' : json;
         const {message, level, createdAt, origin} = JSON.parse(json);
 
         const log = new LogEntity({
