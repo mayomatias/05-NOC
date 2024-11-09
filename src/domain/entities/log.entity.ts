@@ -27,6 +27,9 @@ export class LogEntity {
         this.origin = options.origin;
     }
 
+    //Estos metodosestaticos son para adaptar de un objeto a otro
+    //Tambien se pueden hacer en un archivo aparte y hacer mappers
+
     static logFromJson = (json: string):LogEntity => {
         const {message, level, createdAt, origin} = JSON.parse(json);
 
@@ -39,6 +42,20 @@ export class LogEntity {
         log.createdAt = new Date(createdAt)
         
         return log;
+    }
+
+    static fromObject = (object: { [key: string]: any}):LogEntity => {
+        const {message, level, createdAt, origin} = object;
+
+        //Validaciones
+
+        const log = new LogEntity({
+            message, level, createdAt, origin
+        })
+
+        return log;
+
+
     }
 
 }

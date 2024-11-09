@@ -4,6 +4,11 @@
  *  un origen de datos propios para nuestro LogDatasource
  */
 
+
+/* Nuestro logDatasource establece las regla para que cualquier objeto que nosotros creemos 
+Pueda ser un logDatasource, como pueden ser fileSystemLogDatasource o mongoLogDatasource
+*/ 
+
 import { LogEntity, LogSeverityLevel } from '../entities/log.entity';
 
 export abstract class LogDatasource {
