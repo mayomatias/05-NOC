@@ -24,9 +24,7 @@ export class Server {
             `
          }) */
 
-          //  emailService.sendEmailWithFileSystemLogs('matiasandresmayo@gmail.com')
-
-        new SendEmailLogs(emailService, fileSystemLogRepository).execute('matiasandresmayo@gmail.com')
+        //new SendEmailLogs(emailService, fileSystemLogRepository).execute('matiasandresmayo@gmail.com')
         CronService.createJob(
             '*/5 * * * * *',
             () => {
